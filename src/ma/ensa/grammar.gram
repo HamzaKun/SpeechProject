@@ -6,26 +6,10 @@
 
 grammar controls;
 
+public <command> = <action> <app>;
+public <action> = ( open | close );
+public <app> = ( chrome | fire fox | note pad | photo shop | sublime text | terminal );
 
-public <greet> = (hey ) (computer);
-public <about> = (how are| what's) (up| you);
-public <intro> = (do you) (have a name);
-public <age> = (how old | what) (are you | is your age);
-public <command> = ( open | close ) ( terminal| music | browser | V L C |camera |photo shop | dictionary| chrome | system preferences);
-public <system> = (what time) (is it);
-public <urls> = ( open)  (goo gall |face book | you tube | tweet err );
-public <humor> = (tell me | Make me) (another one | a joke | a coffee);
-public <humors> = (sue dough) (make me) (a coffee);
-public <foxJoke>= (What does ) ( the ) (fox say);
-public <brithumor> = (nice)(one);
-public <end>=(stop | goodbye)(recognition | computer);
-
-public <onSwitch> = ([Turn] On | Enable | Activate){enable};
-public <offSwitch> = ([Turn] Off | Disable | Deactivate) {disable};
-
-public <command> = <action> [<object>] [<polite>];
-<action> = open {OP} | close {CL} | move {MV};
-<object> = [<this_that_etc>] window | door;
-<this_that_etc> = a | the | this | that | the current;
-<polite> = please | kindly;
-public <walo> = <NULL>;
+public <time> = (what time) (is it);
+public <date> = what is the day today;
+public <sound> = (enable | disable ) sound ;
