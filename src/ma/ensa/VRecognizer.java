@@ -44,11 +44,17 @@ public class VRecognizer {
             		while (true) {
             			System.out.println("Start speaking using hello grammar");
             			Result result = recognizer.recognize();
-		    
+            			Synthesis s ; 
+        				
             			if (result != null) {
             				String resultText = result.getBestFinalResultNoFiller();
+            				s= new Synthesis( resultText);
+            				s.SayIt();
             				System.out.println("You said: " + resultText + "\n");
             			} else {
+            				
+            				s= new Synthesis("I can't hear what you said");
+            				s.SayIt();
             				System.out.println("I can't hear what you said.\n");
             			}
 

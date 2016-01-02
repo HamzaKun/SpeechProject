@@ -10,11 +10,15 @@ public class Synthesis {
     
     public Synthesis(String speech){
     	 // Set propreties
-        System.setProperty("mbrola.base", "C:/Users/hamza/Desktop/SpeechDocuments/Syntesis/mbrola");
+        //System.setProperty("mbrola.base", "C:/Users/hamza/Desktop/SpeechDocuments/Syntesis/mbrola");
+        ////
+    	
+    	System.setProperty("mbrola.base","C:/Users/ibouig/Documents/GitHub/SpeechProject/mbrola");
+
         freettsVM = VoiceManager.getInstance();
 
         // Simply change to MBROLA voice
-        freettsVoice = freettsVM.getVoice("mbrola_us2");
+        freettsVoice = freettsVM.getVoice("mbrola_us1");
         
 
         // Allocate your chosen voice
