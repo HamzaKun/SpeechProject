@@ -64,7 +64,7 @@
     <component name="jsgfGrammar" type="edu.cmu.sphinx.jsgf.JSGFGrammar">
         <property name="dictionary" value="dictionary"/>
         <property name="grammarLocation" 
-             value="resource:/ma/ensa/"/>
+             value="resource:/ma/ensa/test"/>
         <property name="grammarName" value="grammar"/>
         <property name="logMath" value="logMath"/>
         <property name="addSilenceWords" value="true"/>

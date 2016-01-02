@@ -5,35 +5,51 @@ import com.sun.speech.freetts.VoiceManager;
 
 public class Synthesis {
 	VoiceManager freettsVM;
-    Voice freettsVoice;
-    String words;
-    
-    public Synthesis(String speech){
-    	 // Set propreties
-        //System.setProperty("mbrola.base", "C:/Users/hamza/Desktop/SpeechDocuments/Syntesis/mbrola");
-        ////
-    	
-    	System.setProperty("mbrola.base","C:/Users/ibouig/Documents/GitHub/SpeechProject/mbrola");
+	Voice freettsVoice;
+	String words;
+	/**
+	 * Create a Synthesizable object with
+	 * with the the default voice mbrola_us1
+	 * @param speech
+	 */
+	public Synthesis(String speech){
+		// Set properties
+		System.setProperty("mbrola.base", "./mbrola");
 
-        freettsVM = VoiceManager.getInstance();
+		freettsVM = VoiceManager.getInstance();
 
-        // Simply change to MBROLA voice
-        freettsVoice = freettsVM.getVoice("mbrola_us1");
-        
+		// Simply change to MBROLA voice
+		freettsVoice = freettsVM.getVoice("mbrola_us1");
 
-        // Allocate your chosen voice
-        freettsVoice.allocate();
-        //To speak
-        words = new String(speech);
-        //freettsVoice.speak(speech);
-    }
-    
-    public void setWords(String speech){
-    	words = new String(speech);
-    }
-    
-    public void SayIt(){
-    	freettsVoice.speak(words);
-    }
+		// Allocate your chosen voice
+		freettsVoice.allocate();
+		
+		//Set the word to be spoken
+		words = new String(speech);
+	}
+
+	/**
+	 * To change the words to be spoken
+	 * @param speech
+	 */
+	public void setWords(String speech){
+		words = new String(speech);
+	}
+
+	/**
+	 * Change the voice, and reallocate it 
+	 * @param name
+	 */
+	public void setVoice(String name){
+		freettsVoice = freettsVM.getVoice(name);
+		freettsVoice.allocate();
+	}
+	
+	/**
+	 * To start speaking
+	 */
+	public void SayIt(){
+		freettsVoice.speak(words);
+	}
 
 }
