@@ -6,26 +6,29 @@
 
 grammar controls;
 
+public <command> = <action> (<app> | <mediaplayers> | <dev> | <browsers> | <default> | <webpages>);
+public <action> = ( open | close );
 
-public <greet> = (hey ) (computer);
-public <about> = (how are| what's) (up| you);
-public <intro> = (do you) (have a name);
-public <age> = (how old | what) (are you | is your age);
-public <command> = ( open | close ) ( terminal| music | browser | V L C |camera |photo shop | dictionary| chrome | system preferences);
-public <system> = (what time) (is it);
-public <urls> = ( open)  (goo gall |face book | you tube | tweet err );
-public <humor> = (tell me | Make me) (another one | a joke | a coffee);
-public <humors> = (sue dough) (make me) (a coffee);
-public <foxJoke>= (What does ) ( the ) (fox say);
-public <brithumor> = (nice)(one);
-public <end>=(stop | goodbye)(recognition | computer);
+public <app> = ( note pad | sublime text | notepad| powerpoint | word | paint | excel | adobe reader | foxit reader | winrar | skype | photo shop | github | wampserver | google drive | dropbox  );
+public <mediaplayers>=(vlc | windows media player);
+public <dev>=(eclipse | netbeans | intellij idea | codeblocks | QT | visual studio | vmware | virtual box);
+public <browsers>=(chrome | fire fox | opera | safari | internet explorer);
+public <default>=( window |terminal | browser | media player | control panel | desktop | computer | My Documents | My Videos | My Pictures | trash | home | My Games |calculator | keyboard );
+public <webpages>=(facebook | tweeter | google | ensa marrakech | stack overflow | gmail | openclassrooms);
 
-public <onSwitch> = ([Turn] On | Enable | Activate){enable};
-public <offSwitch> = ([Turn] Off | Disable | Deactivate) {disable};
 
-public <command> = <action> [<object>] [<polite>];
-<action> = open {OP} | close {CL} | move {MV};
-<object> = [<this_that_etc>] window | door;
-<this_that_etc> = a | the | this | that | the current;
-<polite> = please | kindly;
-public <walo> = <NULL>;
+public <sound> = (enable | disable | mute ) sound ;
+public <volume> = ( increase | decrease) volume ;
+public <light> = ( increase | decrease) light ;
+public <shutdown> = ( log off | change user | shutdown | restart | sleep );
+public <fav_music> = (play)(my favorite)(music);
+public <time> = (what time) (is it) | (time);
+public <date> = (date);
+
+
+public <name> = (what is) (your name);
+public <age> = (what is) (your age);
+
+public <success> = (what is )(success);
+public <joke>= (tell me) ( a joke);
+public <otherjoke> =(tell me)(an other one);
