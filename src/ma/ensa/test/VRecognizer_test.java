@@ -53,6 +53,12 @@ public class VRecognizer_test {
             				s.SayIt();
             				System.out.println("You said: " + resultText + "\n");
             				
+            				String [] parts = resultText.split(" ");
+            				if (parts[0].equals("open")){
+            					Runtime runTime = Runtime.getRuntime();
+            					Process process = runTime.exec(parts[1]);
+            				}
+            				
             			} else {
             				
             				s= new Synthesis("I can't hear what you said");

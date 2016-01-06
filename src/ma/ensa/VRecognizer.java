@@ -89,6 +89,7 @@ public class VRecognizer {
 					System.out.println("I can't hear what you said.\n");
 					s= new Synthesis("I can't hear what you said");
 					s.SayIt();
+					
 				}
 			}
 		}else{
