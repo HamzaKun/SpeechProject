@@ -1,0 +1,15 @@
+#JSGF V1.0;
+
+/**
+ * JSGF Grammar 
+ */
+
+grammar controls;
+
+public <command> = <action> <app>;
+public <action> = ( open | close );
+public <app> = ( chrome | fire fox | note pad | photo shop | sublime text | terminal );
+
+public <time> = (what time) (is it);
+public <date> = what is the day today;
+public <sound> = (enable | disable ) sound ;
