@@ -6,21 +6,23 @@ import com.sun.speech.freetts.VoiceManager;
 public class Synthesis {
 	VoiceManager freettsVM;
 	Voice freettsVoice;
-	String words;
+	String words, voice;
 	/**
 	 * Create a Synthesizable object with
 	 * with the the default voice mbrola_us1
 	 * @param speech
 	 */
-	public Synthesis(String speech){
+	public Synthesis(String speech, String v){
 		// Set properties
 		System.setProperty("mbrola.base", "./mbrola");
 
 		freettsVM = VoiceManager.getInstance();
 
 		// Simply change to MBROLA voice
-		freettsVoice = freettsVM.getVoice("mbrola_us1");
-
+		
+//		freettsVoice = freettsVM.getVoice("mbrola_us1");
+		System.out.println("In Synthesis :"+v);
+		freettsVoice = freettsVM.getVoice(v);
 		// Allocate your chosen voice
 		freettsVoice.allocate();
 		

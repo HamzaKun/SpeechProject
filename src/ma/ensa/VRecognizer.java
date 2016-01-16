@@ -1,22 +1,22 @@
 package ma.ensa;
 
+import java.net.URL;
+import java.util.List;
+
+import javax.swing.SwingWorker;
+
 import edu.cmu.sphinx.frontend.util.Microphone;
 import edu.cmu.sphinx.recognizer.Recognizer;
-import edu.cmu.sphinx.linguist.Linguist;
 import edu.cmu.sphinx.result.Result;
 import edu.cmu.sphinx.util.props.ConfigurationManager;
 import edu.cmu.sphinx.util.props.PropertyException;
 
-import java.io.File;
-import java.io.IOException;
-import java.net.URL;
 
 
-
-public class VRecognizer {
+public class VRecognizer extends SwingWorker<Void, String>{
 
 	static ConfigurationManager cm;
-	private String resultText;
+	private String resultText, voiceN;
 	private Recognizer recognizer;
 	private Microphone microphone;
 
@@ -27,25 +27,26 @@ public class VRecognizer {
 	 * @param args
 	 */
 
-	VRecognizer(String[] args){
+	VRecognizer(String args) {
 		try {
 			URL url;
-			if (args.length > 0) {
+			/*if (args.length > 0) {
 				url = new File(args[0]).toURI().toURL();
 			} else {
 				url = VRecognizer.class.getResource("grammar.config.xml");
-			}
-
+			}*/
+			voiceN = new String(args);
+			url = VRecognizer.class.getResource("grammar.config.xml");
 			System.out.println("Loading...");
 
 			cm = new ConfigurationManager(url);
 			recognizer = (Recognizer) cm.lookup("recognizer");
 			microphone = (Microphone) cm.lookup("microphone");
 		}
-		catch (IOException e) {
+		/*catch (IOException e) {
 			System.err.println("Problem when loading Reco: " + e);
 			e.printStackTrace();
-		} 
+		}*/ 
 		catch (PropertyException e) {
 			System.err.println("Problem configuring Reco: " + e);
 			e.printStackTrace();
@@ -67,29 +68,14 @@ public class VRecognizer {
 			while (true) {
 				System.out.println("Start speaking using hello grammar");
 				Result result = recognizer.recognize();
-				Synthesis s ; 
 
 				if (result != null) {
 
 					resultText = result.getBestFinalResultNoFiller();
 					System.out.println("You said: " + resultText + "\n");
-					s= new Synthesis( resultText);
-					s.SayIt();
-					if(isCommand(resultText)){
-						try{
-							Process exec = new ProcessBuilder("CMD", "/C", getCommand(resultText)).start();
-						}catch(Exception e){
-							System.out.println("Problem while trying to run a command");
-							e.printStackTrace();
-						}
-						//Here we can add the microphone.stopRecognition if necessary
-						microphone.clear();
-					}
-				} else {
-					System.out.println("I can't hear what you said.\n");
-					s= new Synthesis("I can't hear what you said");
-					s.SayIt();
-					
+					Commander.Respond(resultText, voiceN);
+					//Here we can add the microphone.stopRecognition if necessary
+					microphone.clear();
 				}
 			}
 		}else{
@@ -99,30 +85,16 @@ public class VRecognizer {
 		}
 	}
 
-
-	/**
-	 * A function that checks if the result of the recognition is a command
-	 * as open, close or some others
-	 * @param arg
-	 * @return
-	 */
-	public boolean isCommand(String arg){
-		boolean b = true;
-		return b;
+	@Override
+	protected Void doInBackground() throws Exception {
+		// TODO Auto-generated method stub
+		return null;
 	}
+
+
 	
-	/**
-	 * Used to get the command
-	 * the String that will be added to the ProcessBuilder
-	 * @param arg
-	 * @return
-	 */
-	public String getCommand(String arg){
-		String cmd = new String();
-		return cmd;
-	}
-	public static void main(String[] args) {
-
-	}
+	protected void process(List<String> result) {
+        
+    }
 
 }
