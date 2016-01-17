@@ -17,8 +17,9 @@ import java.net.URL;
 public class VRecognizer_test {
 	
     static ConfigurationManager cm;
-    public static Commander_test c;
-
+    
+    
+   
     public static void main(String[] args) {
         try {
             	URL url;
@@ -33,30 +34,29 @@ public class VRecognizer_test {
             	cm = new ConfigurationManager(url);
             	Recognizer recognizer = (Recognizer) cm.lookup("recognizer");
             	Microphone microphone = (Microphone) cm.lookup("microphone");
-            	
+
+            	/* allocate the resource necessary for the recognizer */
             	recognizer.allocate();
 
+            	/* the microphone will keep recording until the program exits */
             	if (microphone.startRecording()) {
             		System.out.println("Speak: ");
 
             		while (true) {
-            			System.out.println("Start speaking using grammar");
+            			System.out.println("Start speaking using hello grammar");
             			Result result = recognizer.recognize();
             			Synthesis s ; 
             			String voiceName = new String("mbrola_us1");
             			if (result != null) {
-            				new Commander_test();
-            				
             				String resultText = result.getBestFinalResultNoFiller();
-            				resultText = c.getCommand(resultText)[1];
             				s= new Synthesis( resultText, voiceName);
             				s.SayIt();
             				System.out.println("You said: " + resultText + "\n");
             				
-            				if(!resultText.isEmpty()){
-            				
+            				String [] parts = resultText.split(" ");
+            				if (parts[0].equals("open")){
             					Runtime runTime = Runtime.getRuntime();
-            					runTime.exec(resultText);
+            					Process process = runTime.exec(parts[1]);
             				}
             				
             			} else {

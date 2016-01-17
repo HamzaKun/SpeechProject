@@ -11,19 +11,21 @@ public <recognition>=(start | stop )(recognition);
 public <command> = <action> (<app> | <mediaplayers> | <dev> | <browsers> | <default> | <webpages>);
 public <action> = ( open | close );
 
-public <app> = ( note pad | powerpoint | word | paint | excel | foxit reader | winrar | skype | photo shop );
-public <mediaplayers>=(windows media player);
-public <dev>=(eclipse | netbeans | code blocks | vmware);
+public <app> = ( note pad | sublime text | powerpoint | word | paint | excel | adobe reader | foxit reader | winrar | skype | photo shop | github | wampserver | google drive | dropbox  );
+public <mediaplayers>=(vlc | windows media player);
+public <dev>=(eclipse | netbeans | intellij idea | code blocks | Q T | visual studio | vmware | virtual box);
 public <browsers>=(chrome | fire fox | opera | safari | internet explorer);
-public <default>=(terminal | browser | media player | control panel | desktop | computer | My Documents | My Videos | My Pictures | Recycle bin |calculator | keyboard );
-public <webpages>=(facebook | tweeter | google | ensa marrakech | stack overflow | gmail | github |openclassrooms);
+public <default>=( window |terminal | browser | media player | control panel | desktop | computer | My Documents | My Videos | My Pictures | trash | home | My Games |calculator | keyboard );
+public <webpages>=(facebook | tweeter | google | ensa marrakech | stack overflow | gmail | openclassrooms);
 
 
 
-public <sound> = (enable | disable) sound ;
-
+public <sound> = (enable | disable | mute ) sound ;
+public <volume> = ( increase | decrease) volume ;
+public <light> = ( increase | decrease) light ;
 public <wifi> = ( enable | disable ) (wi fi);
-public <shutdown> = ( log off | shutdown | restart | sleep );
+public <shutdown> = ( log off | change user | shutdown | restart | sleep );
+public <fav_music> = (play)(music);
 public <time> = (what time is it) | (time);
 public <date> = (date);
 

@@ -56,47 +56,10 @@ public class Commander {
 		}
 
 
-		static void run(String cmdtype){
+		static void run(){
 			String query;
-			if(cmdtype.equals("open")){
-				switch(command){
-				case "notepad": query="start notepad";break;
-				case "chrome" : query="start chrome";break;
-				case "firefox": query="start firefox";break;
-				case "powerpoint": query="start powerpnt";break;
-				case "word": query="start winword";break;
-				case "excel": query="start excel";break;
-
-				case "foxitreader": query="start FoxitReader";break;
-				case "winrar": query="start winrar";break;
-				case "skype": query="start skype";break;
-				case "photshop": query="start photoshop";break;
-				case "windowsmediaplayer": query="start wmplayer";break;
-				case "vmware": query="start vmware";break;
-				case "internetexplorer": query="start iexplore";break;
-				case "terminal": query="start";break;
-				
-				case "browser": query="https:";break;
-				case "controlpanel": query="control panel";break;
-				case "desktop": query="start desktop";break;
-				case "computer": query="explorer /root,";break;
-				case "MyDocuments": query="start documents";break;
-				case "MyVideos": query="start Videos";break;
-				case "MyPictures": query="start Pictures";break;
-				case "Recyclebin": query="start shell:RecycleBinFolder";break;
-				case "calculator": query="start calc";break;
-				case "Keybord" : query="start osk";break;
-				
-				case "facebook" : query="start https:/www.facebook.com ";break;
-				case "twitter" : query="start https:/www.twitter.com ";break;
-				case "google" : query="start https:/www.google.com ";break;
-				case "ensamarrakech" : query="start https:/www.ensa.ac.ma ";break;
-				case "gmail" : query="start https:/www.gmail.com ";break;
-				case "stackoverflow" : query="start https:/www.stackoverflow.com ";break;
-				case "github" : query="start https:/www.github.com ";break;
-				case "openclassrooms" : query="start https:/www.openclassrooms.com ";break;
-				default :query="commande introuvable";
-				}
+			switch(command){
+			case "home": query="$HOME :3" ;
 			}
 		}
 
@@ -107,14 +70,8 @@ public class Commander {
 				for (int i=1 ;i< cmd.length() ; i++){
 					command+=parts[i];
 				}
-				run("open");
-			}else {
-				for (int i=0 ;i< cmd.length() ; i++){
-					command+=parts[i];
-				}
-				run("open");
+				run();
 			}
-			
 		}
 
 	}
