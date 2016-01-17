@@ -5,11 +5,14 @@ public class Commander {
 	private static Process process ;
 	private static String command;
 
-	static void  Respond(String resultText, String voice){
+	static String  Respond(String resultText, String voice){
 		Synthesis s ; 
-		s= new Synthesis( resultText, voice);
+//		s= new Synthesis("You said: " +resultText, voice);
+		//System.out.println("You said: " +resultText);
+		String response = new String();
+		s= new Synthesis("From Commander.Respond", voice);
 		s.SayIt();
-		if(isCommand(resultText)){
+		/*if(isCommand(resultText)){
 			try{
 				Process exec = new ProcessBuilder("CMD", "/C", getCommand(resultText)).start();
 			}catch(Exception e){
@@ -21,7 +24,8 @@ public class Commander {
 			s= new Synthesis("I can't hear what you said", voice);
 			s.SayIt();
 			
-		}
+		}*/
+		return ("From Commander.Respond");
 	}
 		/**
 		 * A function that checks if the result of the recognition is a command

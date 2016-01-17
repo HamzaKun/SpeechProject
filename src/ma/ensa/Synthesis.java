@@ -21,13 +21,14 @@ public class Synthesis {
 		// Simply change to MBROLA voice
 		
 //		freettsVoice = freettsVM.getVoice("mbrola_us1");
-		System.out.println("In Synthesis :"+v);
+		//System.out.println("In Synthesis :"+v);
 		freettsVoice = freettsVM.getVoice(v);
 		// Allocate your chosen voice
 		freettsVoice.allocate();
 		
 		//Set the word to be spoken
 		words = new String(speech);
+		//System.out.println("Getting out of synthesis");
 	}
 
 	/**
@@ -52,6 +53,7 @@ public class Synthesis {
 	 */
 	public void SayIt(){
 		freettsVoice.speak(words);
+		System.out.println("I've said: "+words);
 	}
 
 }

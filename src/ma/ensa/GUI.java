@@ -17,10 +17,11 @@ import javax.swing.JTextArea;
 
 public class GUI {
 	JLabel backGround ;
-	JTextArea You ;
-	JTextArea Computer ;
+	static JTextArea You ;
+	static JTextArea Computer ;
 	JComboBox<String> choix;
 	String voiceName ;
+	RecoTask recoTask;
 
 	public GUI(){
 		JFrame fenetre = new JFrame("Speech Project");
@@ -77,14 +78,16 @@ public class GUI {
 		});
 		start.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
-				Computer.setText("Starting recognition");
 				Synthesis s = new Synthesis("Starting recognition",voiceName);
-				
+				Computer.setText("Computer : Starting recognition");
 				s.SayIt();
+				recoTask = new RecoTask();
+				recoTask.execute();
+				
 
 				//JOptionPane.showMessageDialog(null, "");
-				VRecognizer recognize = new VRecognizer((String)choix.getSelectedItem());
-				recognize.StartRec();
+//				VRecognizer recognize = new VRecognizer((String)choix.getSelectedItem());
+//				recognize.StartRec();
 
 			}
 		});
@@ -123,6 +126,14 @@ public class GUI {
 
 	}
 
-
+	public static void youSetText(String text){
+		You.setText(text);
+	}
+	
+	public static void computerSetText(String text){
+		Computer.setText(text);
+	}
+	
+	
 
 }
