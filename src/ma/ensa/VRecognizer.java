@@ -1,6 +1,7 @@
 package ma.ensa;
 
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -97,36 +98,37 @@ public class VRecognizer{
 		//		s= new Synthesis("You said: " +resultText, voice);
 		//System.out.println("You said: " +resultText);
 		//String response = new String();
-		s= new Synthesis("You said "+resultText, voice);
-		s.SayIt();
+		
 		
 		
 		////
 		String []cmd = getCommand(resultText);
-		try{
-			if(cmdType(resultText)==1 ||cmdType(resultText)==2 ||cmdType(resultText)==3 ){ //||cmdType(resultText)==5){
-				if(!resultText.equals("date please") && !resultText.equals("time please") ){
-				ProcessBuilder process = new ProcessBuilder("CMD", "/C", cmd[0]);
-				process.start(); //Thread.sleep(1000); //process.wait(10);
-				System.out.println(getCommand(resultText)[0]);
-				System.out.println(getCommand(resultText)[1]);
+		s= new Synthesis(cmd[1], voice);
+		s.SayIt();
+			if(cmdType(resultText)==1 ||cmdType(resultText)==2 ||cmdType(resultText)==3 ||cmdType(resultText)==5){
+				if(!resultText.endsWith("please")){ //("date please") && !resultText.equals("time please") ){
+					try{
+						ProcessBuilder process = new ProcessBuilder("CMD", "/C", cmd[0]);
+						process.start(); //Thread.sleep(1000); //process.wait(10);
+						System.out.println(getCommand(resultText)[0]);
+						System.out.println(getCommand(resultText)[1]);
+						return (cmd[1]);
+						}catch(Exception e){
+							System.out.println("Problem while trying to run the command");
+							e.printStackTrace();
+						}
 				}
-			}else {
-				return (cmd[1]);
-			}
+			}else if(getCommand(resultText)[0].equals("stop recognition")) System.exit(1);
 			
-		}catch(Exception e){
-			System.out.println("Problem while trying to run the command");
-			e.printStackTrace();
-		}
-		//////
-		
-		
-		
-		
-		//return ("You said : "+resultText);
-		return (cmd[1]);
+			return (cmd[1]);
 	}
+		
+					
+		
+		//////
+	
+		
+
 
 	public String filter (String cmd){
 		String [] parts = cmd.split(" ");
@@ -159,6 +161,7 @@ public class VRecognizer{
 			case "notepad": query[0]="start notepad";query[1]="Opening Notepad";break;
 			case "chrome" : query[0]="start chrome";query[1]="Opening Chrome";break;
 			case "firefox": query[0]="start firefox";query[1]="Opening FireFox";break;
+			case "opera": query[0]="start C:\\\"Program Files (x86)\"\\Opera";query[1]="Opening Opera";break;
 			case "powerpoint": query[0]="start powerpnt";query[1]="Opening PowerPoint";break;
 			case "word": query[0]="start winword";query[1]="Opening Word";break;
 			case "excel": query[0]="start excel";query[1]="Opening Execel";break;
@@ -168,11 +171,13 @@ public class VRecognizer{
 			case "skype": query[0]="start skype";query[1]="Opening Skype";break;
 			case "photoshop": query[0]="start photoshop";query[1]="Opening Photoshop";break;
 			case "windowsmediaplayer": query[0]="start wmplayer";query[1]="Opening Windos Media Player";break;
+			case "mediaplayer": query[0]="start wmplayer";query[1]="Opening Windos Media Player";break;
 			case "vmware": query[0]="start vmware";query[1]="Opening Vmware";break;
 			case "internetexplorer": query[0]="start iexplore";query[1]="Opening Internet Explorer";break;
 			case "terminal": query[0]="start";query[1]="Opening Terminal";break;
+			case "window": query[0]="start explorer.exe";query[1]="Refreshing Computer";break;
 
-			case "browser": query[0]="https:";query[1]="Opening Default Browser";break;
+			case "browser": query[0]="start https:";query[1]="Opening Default Browser";break;
 			case "controlpanel": query[0]="control panel";query[1]="Opening Control Panel";break;
 			case "desktop": query[0]="start desktop";query[1]="Opening Desktop Folder";break;
 			case "computer": query[0]="explorer /root,";query[1]="Opening Computer Folder";break;
@@ -198,62 +203,63 @@ public class VRecognizer{
 		}else if(cmdType(cmd)==2){
 			cmd=filter(cmd);
 			switch(cmd){
-			case "notepad": query[0]="taskkill /IM notepad.exe";query[1]="Closing Notepad";break;
-			case "chrome" : query[0]="taskkill /IM chrome.exe";query[1]="Closing Chrome";break;
-			case "firefox": query[0]="taskkill /IM firefox.exe";query[1]="Closing FireFox";break;
-			case "powerpoint": query[0]="taskkill /IM powerpnt.exe";query[1]="Closing PowerPoint";break;
-			case "word": query[0]="taskkill /IM winword.exe";query[1]="Closing Word";break;
-			case "excel": query[0]="taskkill /IM excel.exe";query[1]="Closing Execel";break;
+			case "notepad": query[0]="taskkill /F /IM notepad.exe";query[1]="Closing Notepad";break;
+			case "chrome" : query[0]="taskkill /F /IM chrome.exe";query[1]="Closing Chrome";break;
+			case "firefox": query[0]="taskkill /F /IM firefox.exe";query[1]="Closing FireFox";break;
+			case "powerpoint": query[0]="taskkill /F /IM powerpnt.exe";query[1]="Closing PowerPoint";break;
+			case "word": query[0]="taskkill /F /IM winword.exe";query[1]="Closing Word";break;
+			case "excel": query[0]="taskkill /F /IM excel.exe";query[1]="Closing Execel";break;
+			case "calculator": query[0]="taskkill /F /IM calc.exe";query[1]="Closing Caculator";break;
+			
+			case "foxitreader": query[0]="taskkill /F /IM FoxitReader.exe";query[1]="Closing FoxitReader";break;
+			case "winrar": query[0]="taskkill /F /IM winrar.exe";query[1]="Closing Winrar";break;
+			case "skype": query[0]="taskkill /F /IM skype.exe";query[1]="Closing Skype";break;
+			case "photoshop": query[0]="taskkill /F /IM photoshop.exe";query[1]="Closing Photoshop";break;
+			case "windowsmediaplayer": query[0]="taskkill /F /IM wmplayer.exe";query[1]="Closing Windos Media Player";break;
+			case "vmware": query[0]="taskkill shutdown /F /IM  vmware.exe";query[1]="Closing Vmware";break;
+			case "internetexplorer": query[0]="taskkill /F /IM iexplore.exe";query[1]="Closing Internet Explorer";break;
+			case "terminal": query[0]="taskkill /F /IM cmd.exe";query[1]="Closing Terminal";break;
 
-			case "foxitreader": query[0]="taskkill /IM FoxitReader.exe";query[1]="Closing FoxitReader";break;
-			case "winrar": query[0]="taskkill /IM winrar.exe";query[1]="Closing Winrar";break;
-			case "skype": query[0]="taskkill /IM skype.exe";query[1]="Closing Skype";break;
-			case "photoshop": query[0]="taskkill /IM photoshop.exe";query[1]="Closing Photoshop";break;
-			case "windowsmediaplayer": query[0]="taskkill /IM wmplayer.exe";query[1]="Closing Windos Media Player";break;
-			case "vmware": query[0]="taskkill /IM vmware.exe";query[1]="Closing Vmware";break;
-			case "internetexplorer": query[0]="taskkill /IM iexplore.exe";query[1]="Closing Internet Explorer";break;
-			case "terminal": query[0]="taskkill /IM cmd.exe";query[1]="Closing Terminal";break;
-
-			case "window": query[0]=" ";query[1]="Closing Current Window";break;
+			case "window": query[0]="taskkill /F /IM explorer.exe";query[1]="Closing Current windows";break;
 			default : query[0]="";query[1]="Command not Valid";break;
 			}
 			return query;
 
 		}else if(cmdType(cmd)==3){
 			switch(cmd){
-			case "enable sound": query[0]="net start Audiosrv";query[1]="Enabling Sound";break;
-			case "disable sound" : query[0]="net stop Audiosrv";query[1]="Disabling Sound";break;
+			case "enable sound": query[0]="start nircmd.exe mutesysvolume 0";query[1]="Enabling Sound";break;
+			case "disable sound" : query[0]="start nircmd.exe mutesysvolume 1";query[1]="Disabling Sound";break;
 			case "enable wirless": query[0]="netsh interface set interface name=\"Local Area Connection\" enable";query[1]="Enabling Wirless Network";break;
-			case "disable wirless": query[0]="netsh interface set interface name=\"Local Area Connection\" disable";query[1]="Disabling Wirless Network";break;
+			case "disable wireless": query[0]="netsh interface set interface name=\"Local Area Connection\" disable";query[1]="Disabling Wireless Network";break;
 			default : query[0]="";query[1]="Command not Valid";break;
 			}
 			return query;
 
 		}else if(cmdType(cmd)==4){
 			switch(cmd){
-			case "start recognition": query[0]="start recognition";query[1]="Starting Recognition";break;
-			case "stop recognition" : query[0]="stop recognition";query[1]="Stoping Recognition";break;
+			case "start recognition": query[0]="start recognition";query[1]="It's All ready Started you fool!";break;
+			case "stop recognition" : query[0]="stop recognition";query[1]="Stoping Recognition ! Have a nice day sir!";break;
 			default : query[0]="";query[1]="Command not Valid";break;
 			}
 			return query;
 
 		}else if(cmdType(cmd)==5){
 			switch(cmd){
-			case "shutdown": query[0]="shutdown -s";query[1]="Shutdown";break;
-			case "log off" : query[0]="stop recognition";query[1]="Log off";break;
-			case "restart": query[0]="";query[1]="shutdown -r";break;
-			case "sleep": query[0]="";query[1]="shutdown -h";break;
+			case "shutdown": query[0]="shutdown /s";query[1]="Shutdown Computer";break;
+			case "log off" : query[0]="shutdown /l";query[1]="Logging off";break;
+			case "restart": query[0]="shutdown /r";query[1]="Restarting Computer";break;
+			case "sleep": query[0]="shutdown /h";query[1]="Sleeping Computer";break;
 			case "date please":
-				Date d = new Date();
-				query[0]=d.toString();query[1]="Date is ";break;
+				SimpleDateFormat d = new SimpleDateFormat("EEEE, dd MMMM yyyy ");
+				query[0]="";query[1]="Today is "+d.format(new Date());break;
 			case "time please": 
-				Date d1 = new Date();
-				query[0]=d1.toString();query[1]="Time is ";break;
+				SimpleDateFormat d1 = new SimpleDateFormat("hh:mm a");
+				query[0]="";query[1]="It is "+d1.format(new Date());break;
 			default : query[0]="";query[1]="Command not Valid";break;
 			}
 			return query;
 
-		}else if(cmdType(cmd)==7){
+		}else if(cmdType(cmd)==6){
 			switch(cmd){
 			case "what is your name": query[0]="";query[1]="My name is Computer";break;
 			case "what is your age" : query[0]="";query[1]="I Am 20 years old";break;

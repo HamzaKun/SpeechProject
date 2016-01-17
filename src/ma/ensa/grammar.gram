@@ -21,7 +21,7 @@ public <webpages>=(facebook | tweeter | google | ensa marrakech | stack overflow
 
 
 public <sound> = (enable | disable ) sound ;
-public <wifi> = ( enable | disable ) (wirless);
+public <wireless> = ( enable | disable ) (wireless);
 public <shutdown> = ( log off | shutdown | restart | sleep );
 public <time> = (time please);
 public <date> = (date please);
