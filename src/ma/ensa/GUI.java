@@ -20,7 +20,7 @@ public class GUI {
 	static JTextArea You ;
 	static JTextArea Computer ;
 	JComboBox<String> choix;
-	String voiceName ;
+	static String voiceName ;
 	RecoTask recoTask;
 
 	public GUI(){
@@ -134,6 +134,8 @@ public class GUI {
 		Computer.setText(text);
 	}
 	
-	
+	public static String getVoiceN(){
+		return voiceName;
+	}
 
 }
