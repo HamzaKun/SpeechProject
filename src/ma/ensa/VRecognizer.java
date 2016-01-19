@@ -159,20 +159,34 @@ public class VRecognizer{
 			cmd=filter(cmd);
 			switch(cmd){
 			case "notepad": query[0]="start notepad";query[1]="Opening Notepad";break;
-			case "chrome" : query[0]="start chrome";query[1]="Opening Chrome";break;
-			case "firefox": query[0]="start firefox";query[1]="Opening FireFox";break;
-			case "opera": query[0]="start C:\\\"Program Files (x86)\"\\Opera";query[1]="Opening Opera";break;
-			case "powerpoint": query[0]="start powerpnt";query[1]="Opening PowerPoint";break;
-			case "word": query[0]="start winword";query[1]="Opening Word";break;
-			case "excel": query[0]="start excel";query[1]="Opening Execel";break;
-
+			case "sublimetext":query[0]="start C:\\\"Program Files (x86)\"\\\"Sublime Text 3\"\\sublime_text.exe";query[1]="Opening Sublime Text";break;
+			case "powerpoint": query[0]="start powerpnt";query[1]="Opening Microsoft PowerPoint";break;
+			case "microsoftword": query[0]="start winword";query[1]="Opening Microsoft Word";break;
+			case "paint" : query[0]="start mspaint";query[1]="Opening Paint";break;
+			case "excel": query[0]="start excel";query[1]="Opening Microsoft Excel";break;
+			case "adobereader": query[0]="start C:\\\"Program Files (x86)\"\\Adobe\\\"Reader 10.0\"\\Reader\\AcroRd32.exe";query[1]="Opening AdobeReader";break;
 			case "foxitreader": query[0]="start FoxitReader";query[1]="Opening FoxitReader";break;
-			case "winrar": query[0]="start winrar";query[1]="Opening Winrar";break;
+			case "winrare": query[0]="start winrar";query[1]="Opening Winrar";break;
 			case "skype": query[0]="start skype";query[1]="Opening Skype";break;
 			case "photoshop": query[0]="start photoshop";query[1]="Opening Photoshop";break;
+			case "wampserver" : query[0]="start C:\\wamp\\wampmanager.exe";query[1]="Opening WampServer";break;
+			case "googledrive" : query[0]="start C:\\\"Program Files (x86)\"\\Google\\Drive\\googledrivesync.exe";query[1]="Opening Google Drive";break;
+			case "dropbox" : query[0]="start C:\\Users\\ibouig\\AppData\\Roaming\\Dropbox\\bin\\Dropbox.exe";query[1]="Opening DropBox";break;
+			case "vlc" : query[0]="start C:\\\"Program Files (x86)\"\\VideoLAN\\VLC\\vlc.exe";query[1]="Opening VLC";break;
 			case "windowsmediaplayer": query[0]="start wmplayer";query[1]="Opening Windos Media Player";break;
 			case "mediaplayer": query[0]="start wmplayer";query[1]="Opening Windos Media Player";break;
-			case "vmware": query[0]="start vmware";query[1]="Opening Vmware";break;
+			case "eclipse": query[0]="start C:\\\"Users\\ibouig\\eclipse\\jee-mars\\eclipse\\eclipse.exe";query[1]="Opening Eclipse";break;
+			case "netbeans": query[0]="start C:\\\"Program Files\"\\\"NetBeans 8.0.2\"\\bin\\netbeans64.exe";query[1]="Opening Netbeans";break;
+			case "codeblocks": query[0]="start C:\\\"Program Files (x86)\"\\CodeBlocks\\codeblocks.exe";query[1]="Opening Code Blocks";break;
+			case "QT": query[0]="start C:\\Qt\\Qt5.4.1\\Tools\\QtCreator\\bin\\qtcreator.exe";query[1]="Opening Q T";break;
+			case "visualstudio": query[0]="start C:\\\"Program Files (x86)\"\\\"Microsoft Visual Studio 12.0\"\\Common7\\IDE\\devenv.exe";query[1]="Opening Visual Studio";break;
+			case "vimware": query[0]="start C:\\\"Program Files (x86)\"\\VMware\\\"VMware Workstation\"\\vmware.exe";query[1]="Opening Vmware";break;
+			case "virtualbox": query[0]="start C:\\\"Program Files\"\\Oracle\\VirtualBox\\VirtualBox.exe";query[1]="Opening Virtual Box";break;
+			
+			case "chrome" : query[0]="start chrome";query[1]="Opening Chrome Browser";break;
+			case "firefox": query[0]="start firefox";query[1]="Opening FireFox Browser";break;
+			case "opera": query[0]="start C:\\\"Program Files (x86)\"\\Opera\\launcher.exe";query[1]="Opening Opera Browser";break;
+			case "safari": query[0]="start C:\\\"Program Files (x86)\"\\Safari\\Safari.exe";query[1]="Opening Safari Browser";break;
 			case "internetexplorer": query[0]="start iexplore";query[1]="Opening Internet Explorer";break;
 			case "terminal": query[0]="start";query[1]="Opening Terminal";break;
 			case "window": query[0]="start explorer.exe";query[1]="Refreshing Computer";break;
@@ -184,17 +198,17 @@ public class VRecognizer{
 			case "MyDocuments": query[0]="start documents";query[1]="Opening My Documents Folder";break;
 			case "MyVideos": query[0]="start Videos";query[1]="Opening My Videos Folder";break;
 			case "MyPictures": query[0]="start Pictures";query[1]="Opening My Pictures Folder";break;
-			case "Recyclebin": query[0]="start shell:RecycleBinFolder";query[1]="Opening Recycle bin Folder";break;
+			case "recyclebin": query[0]="start shell:RecycleBinFolder";query[1]="Opening Recycle bin Folder";break;
 			case "calculator": query[0]="start calc";query[1]="Opening Caculator";break;
 			case "Keybord" : query[0]="start osk";query[1]="Opening Visual Keybord";break;
 
 			case "facebook" : query[0]="start https:/www.facebook.com ";query[1]="Opening www.facebook.com";break;
 			case "twitter" : query[0]="start https:/www.twitter.com ";query[1]="Opening www.twitter.com";break;
 			case "google" : query[0]="start https:/www.google.com ";query[1]="Opening www.google.com";break;
-			case "ensamarrakech" : query[0]="start https:/www.ensa.ac.ma ";query[1]="Opening www.ensa.ac.ma";break;
+			//case "ensamarrakech" : query[0]="start https:/www.ensa.ac.ma ";query[1]="Opening www.ensa.ac.ma";break;
 			case "gmail" : query[0]="start https:/www.gmail.com ";query[1]="Opening www.gmail.com";break;
 			case "stackoverflow" : query[0]="start https:/www.stackoverflow.com ";query[1]="Opening www.stackoverflow.com";break;
-			case "github" : query[0]="start https:/www.github.com ";query[1]="Opening www.github.com";break;
+			case "gethub" : query[0]="start https:/www.github.com ";query[1]="Opening www.github.com";break;
 			case "openclassrooms" : query[0]="start https:/www.openclassrooms.com ";query[1]="Opening www.openclassrooms.com";break;
 			default : query[0]="";query[1]="Command not Valid";break;
 			}
@@ -203,25 +217,47 @@ public class VRecognizer{
 		}else if(cmdType(cmd)==2){
 			cmd=filter(cmd);
 			switch(cmd){
-			case "notepad": query[0]="taskkill /F /IM notepad.exe";query[1]="Closing Notepad";break;
-			case "chrome" : query[0]="taskkill /F /IM chrome.exe";query[1]="Closing Chrome";break;
-			case "firefox": query[0]="taskkill /F /IM firefox.exe";query[1]="Closing FireFox";break;
-			case "powerpoint": query[0]="taskkill /F /IM powerpnt.exe";query[1]="Closing PowerPoint";break;
-			case "word": query[0]="taskkill /F /IM winword.exe";query[1]="Closing Word";break;
-			case "excel": query[0]="taskkill /F /IM excel.exe";query[1]="Closing Execel";break;
-			case "calculator": query[0]="taskkill /F /IM calc.exe";query[1]="Closing Caculator";break;
 			
+			case "notepad": query[0]="taskkill /F /IM notepad.exe";query[1]="Closing Notepad";break;
+			case "sublimetext":query[0]="taskkill /F /IM sublime_text.exe";query[1]="Closing Sublime Text";break;
+			case "powerpoint": query[0]="taskkill /F /IM powerpnt.exe";query[1]="Closing Microsoft PowerPoint";break;
+			case "microsoftword": query[0]="taskkill /F /IM winword.exe";query[1]="Closing Microsoft Word";break;
+			case "paint" : query[0]="taskkill /F /IM mspaint.exe";query[1]="Closing Paint";break;
+			case "excel": query[0]="taskkill /F /IM excel.exe";query[1]="Closing Excel";break;
+			case "adobereader" : query[0]="taskkill /F /IM AcroRd32.exe";query[1]="Closing AdobeReader";break;
 			case "foxitreader": query[0]="taskkill /F /IM FoxitReader.exe";query[1]="Closing FoxitReader";break;
-			case "winrar": query[0]="taskkill /F /IM winrar.exe";query[1]="Closing Winrar";break;
+			case "winrare": query[0]="taskkill /F /IM winrar.exe";query[1]="Closing Winrar";break;
 			case "skype": query[0]="taskkill /F /IM skype.exe";query[1]="Closing Skype";break;
 			case "photoshop": query[0]="taskkill /F /IM photoshop.exe";query[1]="Closing Photoshop";break;
+			case "wampserver": query[0]="taskkill /F /IM wampmanager.exe";query[1]="Closing WampServer";break;
+			case "googledrive": query[0]="taskkill /F /IM googledrivesync.exe";query[1]="Closing Google Drive";break;
+			case "dropbox": query[0]="taskkill /F /IM Dropbox.exe";query[1]="Closing DropBox";break;
+			case "vlc" : query[0]="taskkill /F /IM vlc.exe";query[1]="Closing vlc";break;
 			case "windowsmediaplayer": query[0]="taskkill /F /IM wmplayer.exe";query[1]="Closing Windos Media Player";break;
-			case "vmware": query[0]="taskkill shutdown /F /IM  vmware.exe";query[1]="Closing Vmware";break;
-			case "internetexplorer": query[0]="taskkill /F /IM iexplore.exe";query[1]="Closing Internet Explorer";break;
-			case "terminal": query[0]="taskkill /F /IM cmd.exe";query[1]="Closing Terminal";break;
+			case "mediaplayer": query[0]="taskkill /F /IM wmplayer.exe";query[1]="Closing Windos Media Player";break;
+			case "eclipse": query[0]="taskkill /F /IM eclipse.exe";query[1]="Closing Eclipse";break;
+			case "netbeans": query[0]="taskkill /F /IM netbeans64.exe";query[1]="Closing NetBeans";break;
+			case "codeblocks": query[0]="taskkill /F /IM codeblocks.exe";query[1]="Closing Code Blocks";break;
+			case "QT": query[0]="taskkill /F /IM qtcreator.exe";query[1]="Closing Q T";break;
+			case "visualstudio": query[0]="taskkill /F /IM devenv.exe";query[1]="Closing Visual Studio";break;
+			case "vimware": query[0]="taskkill /F /IM vmware.exe";query[1]="Closing Vmware";break;
+			case "virtualbox": query[0]="taskkill /F /IM VirtualBox.exe";query[1]="Closing Virtual Box";break;
 
+			case "chrome" : query[0]="taskkill /F /IM chrome.exe";query[1]="Closing Chrome Browser";break;
+			case "firefox": query[0]="taskkill /F /IM firefox.exe";query[1]="Closing FireFox Browser";break;
+			case "opera": query[0]="taskkill /F /IM opera.exe";query[1]="Closing Opera Browser";break;
+			case "safari": query[0]="taskkill /F/IM Safari.exe";query[1]="Closing Safari Browser";break;
+			case "internetexplorer": query[0]="taskkill /F /IM iexplore.exe";query[1]="Closing Internet Explorer";break;
+			case "browser": query[0]="taskkill /F/IM Safari.exe /IM chrome.exe /IM firefox.exe /IM iexplore.exe";query[1]="Closing Browsers";break;
+
+			case "terminal": query[0]="taskkill /F /IM cmd.exe";query[1]="Closing Terminal";break;
 			case "window": query[0]="taskkill /F /IM explorer.exe";query[1]="Closing Current windows";break;
+
+			case "calculator": query[0]="taskkill /F /IM calc.exe";query[1]="Closing Caculator";break;
+			case "Keybord" : query[0]="taskkill /F /IM osk.exe";query[1]="Closing Visual Keybord";break;
+
 			default : query[0]="";query[1]="Command not Valid";break;
+	
 			}
 			return query;
 
@@ -229,8 +265,8 @@ public class VRecognizer{
 			switch(cmd){
 			case "enable sound": query[0]="start nircmd.exe mutesysvolume 0";query[1]="Enabling Sound";break;
 			case "disable sound" : query[0]="start nircmd.exe mutesysvolume 1";query[1]="Disabling Sound";break;
-			case "enable wirless": query[0]="netsh interface set interface name=\"Local Area Connection\" enable";query[1]="Enabling Wirless Network";break;
-			case "disable wireless": query[0]="netsh interface set interface name=\"Local Area Connection\" disable";query[1]="Disabling Wireless Network";break;
+			case "enable wireless": query[0]="netsh interface set interface name=\"Wireless Network Connection\" enable";query[1]="Enabling Wirless Network";break;
+			case "disable wireless": query[0]="netsh interface set interface name=\"Wireless Network Connection\" disable";query[1]="Disabling Wireless Network";break;
 			default : query[0]="";query[1]="Command not Valid";break;
 			}
 			return query;
@@ -245,10 +281,10 @@ public class VRecognizer{
 
 		}else if(cmdType(cmd)==5){
 			switch(cmd){
-			case "shutdown": query[0]="shutdown /s";query[1]="Shutdown Computer";break;
-			case "log off" : query[0]="shutdown /l";query[1]="Logging off";break;
-			case "restart": query[0]="shutdown /r";query[1]="Restarting Computer";break;
-			case "sleep": query[0]="shutdown /h";query[1]="Sleeping Computer";break;
+			case "shutdown computer now": query[0]="shutdown /s";query[1]="Shutdown Computer";break;
+			case "log off computer now" : query[0]="shutdown /l";query[1]="Logging off";break;
+			case "restart computer now ": query[0]="shutdown /r";query[1]="Restarting Computer";break;
+			case "sleep computer now": query[0]="shutdown /h";query[1]="Sleeping Computer";break;
 			case "date please":
 				SimpleDateFormat d = new SimpleDateFormat("EEEE, dd MMMM yyyy ");
 				query[0]="";query[1]="Today is "+d.format(new Date());break;
