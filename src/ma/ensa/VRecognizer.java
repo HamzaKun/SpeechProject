@@ -205,6 +205,8 @@ public class VRecognizer{
 			case "facebook" : query[0]="start https:/www.facebook.com ";query[1]="Opening www.facebook.com";break;
 			case "twitter" : query[0]="start https:/www.twitter.com ";query[1]="Opening www.twitter.com";break;
 			case "google" : query[0]="start https:/www.google.com ";query[1]="Opening www.google.com";break;
+			case "youtube" : query[0]="start https:/www.youtube.com ";query[1]="Opening www.youtube.com";break;
+
 			//case "ensamarrakech" : query[0]="start https:/www.ensa.ac.ma ";query[1]="Opening www.ensa.ac.ma";break;
 			case "gmail" : query[0]="start https:/www.gmail.com ";query[1]="Opening www.gmail.com";break;
 			case "stackoverflow" : query[0]="start https:/www.stackoverflow.com ";query[1]="Opening www.stackoverflow.com";break;
@@ -251,7 +253,7 @@ public class VRecognizer{
 			case "browser": query[0]="taskkill /F/IM Safari.exe /IM chrome.exe /IM firefox.exe /IM iexplore.exe";query[1]="Closing Browsers";break;
 
 			case "terminal": query[0]="taskkill /F /IM cmd.exe";query[1]="Closing Terminal";break;
-			case "window": query[0]="taskkill /F /IM explorer.exe";query[1]="Closing Current windows";break;
+			case "window": query[0]="start nircmd.exe sendkeypress alt+f4";query[1]="Closing Current window";break;
 
 			case "calculator": query[0]="taskkill /F /IM calc.exe";query[1]="Closing Caculator";break;
 			case "Keybord" : query[0]="taskkill /F /IM osk.exe";query[1]="Closing Visual Keybord";break;
@@ -302,7 +304,20 @@ public class VRecognizer{
 			case "what is success": query[0]="";query[1]="Success is this Project";break;
 			case "tell me a joke": query[0]="";query[1]="I Am a Joke hahahahahahahaha!";break;
 			case "tell me an other one": query[0]="";query[1]="You Are an other Joke hahahahahaha";break;
-			default : query[0]="";query[1]="Sorry i dont understand";break;
+			case "hello computer": query[0]="";query[1]="Hi sir , what can i do for you ?";break;
+			case "good morning computer": query[0]="";query[1]="good morning sir , what can i do for you ?";break;
+			case "good afternoon computer": query[0]="";query[1]="good afternoon sir , what can i do for you ?";break;
+			case "good evening computer": query[0]="";query[1]="good evening sir , what can i do for you ?";break;
+			case "good night computer": query[0]="";query[1]="good night sir , what can i do for you ?";break;
+			case "hey computer": query[0]="";query[1]="Hi sir , what can i do for you ?";break;
+			case "what's up computer": query[0]="";query[1]="Hi sir , what can i do for you ?";break;
+			case "who made you": query[0]="";query[1]="i was developped by Hamza Kasry and Said Bouigherdaine";break;
+			case "who programmed you": query[0]="";query[1]="i was developed by Hamza Kasry and Said Bouigherdaine";break;
+			case "who developed you": query[0]="";query[1]="i was developed by Hamza Kasry and Said Bouigherdaine";break;			
+			case "fuck you": query[0]="";query[1]="I don't speak that bull of shit you mother fucker , you little shit ! and you know what screw you shrimpe Fuck you Too !";break;			
+			case "damn you": query[0]="";query[1]="I don't speak that bull of shit you mother fucker , you little shit ! and you know what screw you shrimpe Fuck you Too !";break;			
+
+			default : query[0]="";query[1]="Sorry i dont understand what you mean sir";break;
 			}
 			return query;
 
