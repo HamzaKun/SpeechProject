@@ -107,14 +107,14 @@ public class VRecognizer{
 		//		s= new Synthesis("You said: " +resultText, voice);
 		//System.out.println("You said: " +resultText);
 		//String response = new String();
-<<<<<<< HEAD
-		s= new Synthesis("You said "+resultText, voice);
-		s.SayIt();
-		GUI.computerSetText("You said :"+resultText);
-=======
-		
-		
->>>>>>> origin/master
+//<<<<<<< HEAD
+//		s= new Synthesis("You said "+resultText, voice);
+//		s.SayIt();
+//		GUI.computerSetText("You said :"+resultText);
+//=======
+//		
+//		
+//>>>>>>> origin/master
 		
 		////
 		String []cmd = getCommand(resultText);
@@ -220,6 +220,8 @@ public class VRecognizer{
 			case "facebook" : query[0]="start https:/www.facebook.com ";query[1]="Opening www.facebook.com";break;
 			case "twitter" : query[0]="start https:/www.twitter.com ";query[1]="Opening www.twitter.com";break;
 			case "google" : query[0]="start https:/www.google.com ";query[1]="Opening www.google.com";break;
+			case "youtube" : query[0]="start https:/www.youtube.com ";query[1]="Opening www.youtube.com";break;
+
 			//case "ensamarrakech" : query[0]="start https:/www.ensa.ac.ma ";query[1]="Opening www.ensa.ac.ma";break;
 			case "gmail" : query[0]="start https:/www.gmail.com ";query[1]="Opening www.gmail.com";break;
 			case "stackoverflow" : query[0]="start https:/www.stackoverflow.com ";query[1]="Opening www.stackoverflow.com";break;
@@ -266,7 +268,7 @@ public class VRecognizer{
 			case "browser": query[0]="taskkill /F/IM Safari.exe /IM chrome.exe /IM firefox.exe /IM iexplore.exe";query[1]="Closing Browsers";break;
 
 			case "terminal": query[0]="taskkill /F /IM cmd.exe";query[1]="Closing Terminal";break;
-			case "window": query[0]="taskkill /F /IM explorer.exe";query[1]="Closing Current windows";break;
+			case "window": query[0]="start nircmd.exe sendkeypress alt+f4";query[1]="Closing Current window";break;
 
 			case "calculator": query[0]="taskkill /F /IM calc.exe";query[1]="Closing Caculator";break;
 			case "Keybord" : query[0]="taskkill /F /IM osk.exe";query[1]="Closing Visual Keybord";break;
@@ -325,7 +327,6 @@ public class VRecognizer{
 		return null;
 
 	}
-
 }
 
 /**
@@ -369,7 +370,7 @@ class RecoTask extends SwingWorker<Void, ResPair> {
 
 	protected void process(List<ResPair> result) {
 		GUI.youSetText("You: "+result.get(result.size()-1).you);
-		GUI.computerSetText("Computer: You said "+result.get(result.size()-1).comp);
+		GUI.computerSetText("Computer: "+result.get(result.size()-1).comp);
 	}
 
 }
