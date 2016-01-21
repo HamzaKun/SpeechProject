@@ -18,7 +18,8 @@ import edu.cmu.sphinx.util.props.PropertyException;
 public class VRecognizer{
 
 	static ConfigurationManager cm;
-	private String resultText, voiceN;
+	private String resultText;
+	public static String voiceN;
 	String speech;
 	int nbreAppel=0;
 	private Recognizer recognizer;
@@ -59,6 +60,13 @@ public class VRecognizer{
 	 * StartRec is the function that starts the recognition
 	 */
 	public String StartRec(){
+		if(nbreAppel ==0){
+			GUI.computerSetText("Computer: What can I do for you?");
+			Synthesis s ;
+			s= new Synthesis("What can I do for you?", voiceN);
+			s.SayIt();
+		}
+		
 		/* the microphone will keep recording until the program exits */
 		if(nbreAppel++ == 0){
 			if (! microphone.startRecording()){
@@ -87,6 +95,7 @@ public class VRecognizer{
 			//Here we can add the microphone.stopRecognition if necessary
 			//microphone.stopRecording();
 			microphone.clear();
+			GUI.youSetText("You: "+resultText);
 			return resultText;
 		}else{
 			return null;
@@ -98,8 +107,14 @@ public class VRecognizer{
 		//		s= new Synthesis("You said: " +resultText, voice);
 		//System.out.println("You said: " +resultText);
 		//String response = new String();
-		
-		
+//<<<<<<< HEAD
+//		s= new Synthesis("You said "+resultText, voice);
+//		s.SayIt();
+//		GUI.computerSetText("You said :"+resultText);
+//=======
+//		
+//		
+//>>>>>>> origin/master
 		
 		////
 		String []cmd = getCommand(resultText);
@@ -325,7 +340,6 @@ public class VRecognizer{
 		return null;
 
 	}
-
 }
 
 /**
@@ -349,13 +363,14 @@ class RecoTask extends SwingWorker<Void, ResPair> {
 
 	protected Void doInBackground() throws Exception {
 		//System.out.println("In background");
-		VRecognizer vrec = new VRecognizer("mbrola_us1");
+		//voiceN = new String(GUI.getVoiceN());
+		VRecognizer vrec = new VRecognizer(GUI.getVoiceN());
 		while (!isCancelled()) {
 			System.out.println("here: " + (i++));
 
 			String YOU = new String(vrec.StartRec());
 			//System.out.println(YOU);
-			String COMP = new String(vrec.Respond(YOU, "mbrola_us1"));
+			String COMP = new String(vrec.Respond(YOU, GUI.getVoiceN()));
 			//String h = new String(vrec.StartRec());
 			//System.out.println((i++)+" Before publishing");
 			publish(new ResPair(YOU, COMP));
@@ -367,8 +382,8 @@ class RecoTask extends SwingWorker<Void, ResPair> {
 
 
 	protected void process(List<ResPair> result) {
-		GUI.youSetText(result.get(result.size()-1).you);
-		GUI.computerSetText(result.get(result.size()-1).comp);
+		GUI.youSetText("You: "+result.get(result.size()-1).you);
+		GUI.computerSetText("Computer: "+result.get(result.size()-1).comp);
 	}
 
 }
