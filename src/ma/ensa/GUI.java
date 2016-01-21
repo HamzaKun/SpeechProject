@@ -2,10 +2,15 @@ package ma.ensa;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.awt.image.ImageObserver;
+import java.awt.image.ImageProducer;
+import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -22,10 +27,11 @@ public class GUI {
 	JComboBox<String> choix;
 	static String voiceName ;
 	RecoTask recoTask;
+	
 
 	public GUI(){
 		JFrame fenetre = new JFrame("Speech Project");
-
+		fenetre.setIconImage(new ImageIcon("icone.gif").getImage());
 		fenetre.setSize(450, 625);
 		fenetre.setResizable(false);
 		fenetre.setIconImage(new ImageIcon("icone.gif").getImage());
@@ -63,7 +69,7 @@ public class GUI {
 		Computer.setLocation(20, 360);
 		Computer.setSize(412, 70);
 
-
+		
 		JButton about = new JButton("About");
 		JButton help = new JButton("Help");
 		JButton start = new JButton("Start");

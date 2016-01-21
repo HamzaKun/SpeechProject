@@ -12,11 +12,11 @@ public class Commander_test {
 	//static void  main (String resultText, String voice){
 	public static void  main (String [] args){
 		Commander_test c= new Commander_test();
-		String resultText = null,voice="mbrola_us3";
+		String resultText = "close opera",voice="mbrola_us3";
 		
-		Synthesis s ; 
-		s= new Synthesis( resultText, voice);
-		s.SayIt();
+//		Synthesis s ; 
+//		s= new Synthesis( resultText, voice);
+//		s.SayIt();
 		
 			try{
 				String cmd= new String();
@@ -38,8 +38,8 @@ public class Commander_test {
 			}
 		
 			System.out.println("I can't hear what you said.\n");
-			s= new Synthesis("I can't hear what you said", voice);
-			s.SayIt();
+//			s= new Synthesis("I can't hear what you said", voice);
+//			s.SayIt();
 			
 		
 	}
@@ -120,7 +120,7 @@ public String[] getCommand(String cmd){
 			case "powerpoint": query[0]="taskkill /IM powerpnt.exe";query[1]="Closing PowerPoint";break;
 			case "word": query[0]="taskkill /IM winword.exe";query[1]="Closing Word";break;
 			case "excel": query[0]="taskkill /IM excel.exe";query[1]="Closing Execel";break;
-		
+			case "opera": query[0]="taskkill /IM opera.exe";query[1]="Closing Opera";break;
 			case "foxitreader": query[0]="taskkill /IM FoxitReader.exe";query[1]="Closing FoxitReader";break;
 			case "winrar": query[0]="taskkill /IM winrar.exe";query[1]="Closing Winrar";break;
 			case "skype": query[0]="taskkill /IM skype.exe";query[1]="Closing Skype";break;
@@ -129,7 +129,7 @@ public String[] getCommand(String cmd){
 			case "vmware": query[0]="taskkill /IM vmware.exe";query[1]="Closing Vmware";break;
 			case "internetexplorer": query[0]="taskkill /IM iexplore.exe";query[1]="Closing Internet Explorer";break;
 			case "terminal": query[0]="taskkill /IM cmd.exe";query[1]="Closing Terminal";break;
-			
+			case "browser": query[0]="taskkill /F/IM Safari.exe /IM chrome.exe /IM firefox.exe /IM iexplore.exe";query[1]="Closing Browsers";break;
 			case "window": query[0]=" ";query[1]="Closing Current Window";break;
 			default : query[0]="";query[1]="Command not Valid";break;
 		}
