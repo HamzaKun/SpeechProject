@@ -72,9 +72,20 @@ public class GUI {
 		start.setBounds(20,295,90,30);
 		help.setBounds(170,295,90,30);
 		about.setBounds(320,295,90,30);
-		help.addActionListener(new ActionListener(){
+		about.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
-				JOptionPane.showMessageDialog(null, "");
+				JFrame aboutF = new JFrame();
+				JLabel hlab = new JLabel();
+				aboutF.setSize(478, 268);
+				aboutF.setResizable(false);
+				aboutF.setIconImage(new ImageIcon("icone.gif").getImage());
+				hlab.setIcon(new ImageIcon ("about.jpg"));
+				aboutF.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+				aboutF.getContentPane().add(hlab);
+				
+				aboutF.setLocationRelativeTo(null);
+				aboutF.setVisible(true);
+				
 			}
 		});
 		start.addActionListener(new ActionListener(){
@@ -92,7 +103,7 @@ public class GUI {
 
 			}
 		});
-		about.addActionListener(new ActionListener(){
+		help.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent ag0){
 				JOptionPane.showMessageDialog(null, "Said BOUIGHERDAINE \n Hamza KASRY");
 				Synthesis s = new Synthesis("Said BOUIGHERDAINE , Hamza KASRY",voiceName);
