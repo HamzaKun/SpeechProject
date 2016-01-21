@@ -6,8 +6,6 @@
 
 grammar controls;
 
-
-
 public <command> = <action> (<app> | <mediaplayers> | <dev> | <browsers> | <default> | <webpages>);
 public <action> = ( open | close );
 public <app> = ( note pad | sublime text | power point | microsoft word | paint | excel | adobe reader | foxit reader | win rare  | skype | photo shop  | wamp server | google drive | drop box  );
@@ -28,3 +26,7 @@ public <age> = (what is) (your age);
 public <success> = (what is)(success);
 public <joke>= (tell me)(a joke);
 public <otherjoke> =(tell me)(an other one);
+public <hello> = (hello| hey | good morning | good afternoon | good evening | good night )( computer);
+public <ask> = (what's up computer);
+public<make> = (who) ( made | programmed |developed) (you); 
+public<fuck>=(fuck you| damn you);

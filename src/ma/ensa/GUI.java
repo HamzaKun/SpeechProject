@@ -28,6 +28,7 @@ public class GUI {
 
 		fenetre.setSize(450, 625);
 		fenetre.setResizable(false);
+		fenetre.setIconImage(new ImageIcon("icone.gif").getImage());
 
 		try {
 			//UIManager.setLookAndFeel("com.seaglasslookandfeel.SeaGlassLookAndFeel");
