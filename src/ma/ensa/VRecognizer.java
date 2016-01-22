@@ -15,7 +15,7 @@ import edu.cmu.sphinx.util.props.PropertyException;
 
 
 
-public class VRecognizer{
+public class VRecognizer implements VRecognizerDAO{
 
 	static ConfigurationManager cm;
 	private String resultText;
@@ -102,7 +102,7 @@ public class VRecognizer{
 		}
 	}
 
-	String  Respond(String resultText, String voice){
+	public String  Respond(String resultText, String voice){
 		Synthesis s ; 
 		//		s= new Synthesis("You said: " +resultText, voice);
 		//System.out.println("You said: " +resultText);
@@ -137,12 +137,6 @@ public class VRecognizer{
 		GUI.youSetText("Computer: "+cmd[1]);
 		return (cmd[1]);
 	}
-
-
-
-	//////
-
-
 
 
 	public String filter (String cmd){
