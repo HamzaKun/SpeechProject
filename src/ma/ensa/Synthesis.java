@@ -3,29 +3,32 @@ package ma.ensa;
 import com.sun.speech.freetts.Voice;
 import com.sun.speech.freetts.VoiceManager;
 
-public class Synthesis {
+public class Synthesis implements SynthesisDAO{
 	VoiceManager freettsVM;
 	Voice freettsVoice;
-	String words;
+	String words, voice;
 	/**
 	 * Create a Synthesizable object with
 	 * with the the default voice mbrola_us1
 	 * @param speech
 	 */
-	public Synthesis(String speech){
+	public Synthesis(String speech, String v){
 		// Set properties
 		System.setProperty("mbrola.base", "./mbrola");
 
 		freettsVM = VoiceManager.getInstance();
 
 		// Simply change to MBROLA voice
-		freettsVoice = freettsVM.getVoice("mbrola_us1");
-
+		
+//		freettsVoice = freettsVM.getVoice("mbrola_us1");
+		//System.out.println("In Synthesis :"+v);
+		freettsVoice = freettsVM.getVoice(v);
 		// Allocate your chosen voice
 		freettsVoice.allocate();
 		
 		//Set the word to be spoken
 		words = new String(speech);
+		//System.out.println("Getting out of synthesis");
 	}
 
 	/**
@@ -50,6 +53,7 @@ public class Synthesis {
 	 */
 	public void SayIt(){
 		freettsVoice.speak(words);
+		System.out.println("I've said: "+words);
 	}
 
 }
