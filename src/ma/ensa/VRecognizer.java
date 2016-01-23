@@ -15,7 +15,7 @@ import edu.cmu.sphinx.util.props.PropertyException;
 
 
 
-public class VRecognizer{
+public class VRecognizer implements VRecognizerDAO{
 
 	static ConfigurationManager cm;
 	private String resultText;
@@ -66,7 +66,7 @@ public class VRecognizer{
 			s= new Synthesis("What can I do for you?", voiceN);
 			s.SayIt();
 		}
-		
+
 		/* the microphone will keep recording until the program exits */
 		if(nbreAppel++ == 0){
 			if (! microphone.startRecording()){
@@ -102,47 +102,41 @@ public class VRecognizer{
 		}
 	}
 
-	String  Respond(String resultText, String voice){
+	public String  Respond(String resultText, String voice){
 		Synthesis s ; 
 		//		s= new Synthesis("You said: " +resultText, voice);
 		//System.out.println("You said: " +resultText);
 		//String response = new String();
-//<<<<<<< HEAD
-//		s= new Synthesis("You said "+resultText, voice);
-//		s.SayIt();
-//		GUI.computerSetText("You said :"+resultText);
-//=======
-//		
-//		
-//>>>>>>> origin/master
-		
+		//<<<<<<< HEAD
+		//		s= new Synthesis("You said "+resultText, voice);
+		//		s.SayIt();
+		//		GUI.computerSetText("You said :"+resultText);
+		//=======
+		//		
+		//		
+		//>>>>>>> origin/master
+
 		////
 		String []cmd = getCommand(resultText);
 		s= new Synthesis(cmd[1], voice);
 		s.SayIt();
-			if(cmdType(resultText)==1 ||cmdType(resultText)==2 ||cmdType(resultText)==3 ||cmdType(resultText)==5){
-				if(!resultText.endsWith("please")){ //("date please") && !resultText.equals("time please") ){
-					try{
-						ProcessBuilder process = new ProcessBuilder("CMD", "/C", cmd[0]);
-						process.start(); //Thread.sleep(1000); //process.wait(10);
-						System.out.println(getCommand(resultText)[0]);
-						System.out.println(getCommand(resultText)[1]);
-						return (cmd[1]);
-						}catch(Exception e){
-							System.out.println("Problem while trying to run the command");
-							e.printStackTrace();
-						}
+		if(cmdType(resultText)==1 ||cmdType(resultText)==2 ||cmdType(resultText)==3 ||cmdType(resultText)==5){
+			if(!resultText.endsWith("please")){ //("date please") && !resultText.equals("time please") ){
+				try{
+					ProcessBuilder process = new ProcessBuilder("CMD", "/C", cmd[0]);
+					process.start(); //Thread.sleep(1000); //process.wait(10);
+					System.out.println(getCommand(resultText)[0]);
+					System.out.println(getCommand(resultText)[1]);
+					return (cmd[1]);
+				}catch(Exception e){
+					System.out.println("Problem while trying to run the command");
+					e.printStackTrace();
 				}
-			}else if(getCommand(resultText)[0].equals("stop recognition")) System.exit(1);
-			
-			return (cmd[1]);
+			}
+		}else if(getCommand(resultText)[0].equals("stop recognition")) System.exit(1);
+		GUI.youSetText("Computer: "+cmd[1]);
+		return (cmd[1]);
 	}
-		
-					
-		
-		//////
-	
-		
 
 
 	public String filter (String cmd){
@@ -197,7 +191,7 @@ public class VRecognizer{
 			case "visualstudio": query[0]="start C:\\\"Program Files (x86)\"\\\"Microsoft Visual Studio 12.0\"\\Common7\\IDE\\devenv.exe";query[1]="Opening Visual Studio";break;
 			case "vimware": query[0]="start C:\\\"Program Files (x86)\"\\VMware\\\"VMware Workstation\"\\vmware.exe";query[1]="Opening Vmware";break;
 			case "virtualbox": query[0]="start C:\\\"Program Files\"\\Oracle\\VirtualBox\\VirtualBox.exe";query[1]="Opening Virtual Box";break;
-			
+
 			case "chrome" : query[0]="start chrome";query[1]="Opening Chrome Browser";break;
 			case "firefox": query[0]="start firefox";query[1]="Opening FireFox Browser";break;
 			case "opera": query[0]="start C:\\\"Program Files (x86)\"\\Opera\\launcher.exe";query[1]="Opening Opera Browser";break;
@@ -229,12 +223,13 @@ public class VRecognizer{
 			case "openclassrooms" : query[0]="start https:/www.openclassrooms.com ";query[1]="Opening www.openclassrooms.com";break;
 			default : query[0]="";query[1]="Command not Valid";break;
 			}
+			GUI.computerSetText("Computer: "+query[1]);
 			return query;
 
 		}else if(cmdType(cmd)==2){
 			cmd=filter(cmd);
 			switch(cmd){
-			
+
 			case "notepad": query[0]="taskkill /F /IM notepad.exe";query[1]="Closing Notepad";break;
 			case "sublimetext":query[0]="taskkill /F /IM sublime_text.exe";query[1]="Closing Sublime Text";break;
 			case "powerpoint": query[0]="taskkill /F /IM powerpnt.exe";query[1]="Closing Microsoft PowerPoint";break;
@@ -274,8 +269,9 @@ public class VRecognizer{
 			case "Keybord" : query[0]="taskkill /F /IM osk.exe";query[1]="Closing Visual Keybord";break;
 
 			default : query[0]="";query[1]="Command not Valid";break;
-	
+
 			}
+			GUI.computerSetText("Computer: "+query[1]);
 			return query;
 
 		}else if(cmdType(cmd)==3){
@@ -286,6 +282,7 @@ public class VRecognizer{
 			case "disable wireless": query[0]="netsh interface set interface name=\"Wireless Network Connection\" disable";query[1]="Disabling Wireless Network";break;
 			default : query[0]="";query[1]="Command not Valid";break;
 			}
+			GUI.computerSetText("Computer: "+query[1]);
 			return query;
 
 		}else if(cmdType(cmd)==4){
@@ -294,6 +291,7 @@ public class VRecognizer{
 			case "stop recognition" : query[0]="stop recognition";query[1]="Stoping Recognition ! Have a nice day sir!";break;
 			default : query[0]="";query[1]="Command not Valid";break;
 			}
+			GUI.computerSetText("Computer: "+query[1]);
 			return query;
 
 		}else if(cmdType(cmd)==5){
@@ -310,6 +308,7 @@ public class VRecognizer{
 				query[0]="";query[1]="It is "+d1.format(new Date());break;
 			default : query[0]="";query[1]="Command not Valid";break;
 			}
+			GUI.computerSetText("Computer: "+query[1]);
 			return query;
 
 		}else if(cmdType(cmd)==6){
@@ -334,6 +333,7 @@ public class VRecognizer{
 
 			default : query[0]="";query[1]="Sorry i dont understand what you mean sir";break;
 			}
+			GUI.computerSetText("Computer: "+query[1]);
 			return query;
 
 		}
@@ -373,7 +373,7 @@ class RecoTask extends SwingWorker<Void, ResPair> {
 			String COMP = new String(vrec.Respond(YOU, GUI.getVoiceN()));
 			//String h = new String(vrec.StartRec());
 			//System.out.println((i++)+" Before publishing");
-			publish(new ResPair(YOU, COMP));
+			publish(new ResPair(COMP, YOU));
 
 		}
 		return null;
@@ -383,7 +383,7 @@ class RecoTask extends SwingWorker<Void, ResPair> {
 
 	protected void process(List<ResPair> result) {
 		GUI.youSetText("You: "+result.get(result.size()-1).you);
-		GUI.computerSetText("Computer: "+result.get(result.size()-1).comp);
+		//GUI.computerSetText("Computer: "+result.get(result.size()-1).comp);
 	}
 
 }

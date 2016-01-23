@@ -1,6 +1,6 @@
 package ma.ensa;
 
-public class Commander {
+public class Commander  {
 	private static Runtime runTime; 
 	private static Process process ;
 	private static String command;

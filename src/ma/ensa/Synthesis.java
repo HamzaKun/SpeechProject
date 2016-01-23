@@ -3,7 +3,7 @@ package ma.ensa;
 import com.sun.speech.freetts.Voice;
 import com.sun.speech.freetts.VoiceManager;
 
-public class Synthesis {
+public class Synthesis implements SynthesisDAO{
 	VoiceManager freettsVM;
 	Voice freettsVoice;
 	String words, voice;

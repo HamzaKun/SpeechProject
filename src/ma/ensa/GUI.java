@@ -2,22 +2,17 @@ package ma.ensa;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.awt.image.ImageObserver;
-import java.awt.image.ImageProducer;
-import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 public class GUI {
@@ -34,6 +29,7 @@ public class GUI {
 		fenetre.setIconImage(new ImageIcon("icone.gif").getImage());
 		fenetre.setSize(450, 625);
 		fenetre.setResizable(false);
+		fenetre.setIconImage(new ImageIcon("icone.gif").getImage());
 
 		try {
 			//UIManager.setLookAndFeel("com.seaglasslookandfeel.SeaGlassLookAndFeel");
@@ -77,9 +73,20 @@ public class GUI {
 		start.setBounds(20,295,90,30);
 		help.setBounds(170,295,90,30);
 		about.setBounds(320,295,90,30);
-		help.addActionListener(new ActionListener(){
+		about.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent arg0) {
-				JOptionPane.showMessageDialog(null, "");
+				JFrame aboutF = new JFrame();
+				JLabel hlab = new JLabel();
+				aboutF.setSize(478, 268);
+				aboutF.setResizable(false);
+				aboutF.setIconImage(new ImageIcon("icone.gif").getImage());
+				hlab.setIcon(new ImageIcon ("about.jpg"));
+				aboutF.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+				aboutF.getContentPane().add(hlab);
+				
+				aboutF.setLocationRelativeTo(null);
+				aboutF.setVisible(true);
+				
 			}
 		});
 		start.addActionListener(new ActionListener(){
@@ -97,11 +104,22 @@ public class GUI {
 
 			}
 		});
-		about.addActionListener(new ActionListener(){
+		help.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent ag0){
-				JOptionPane.showMessageDialog(null, "Said BOUIGHERDAINE \n Hamza KASRY");
-				Synthesis s = new Synthesis("Said BOUIGHERDAINE , Hamza KASRY",voiceName);
-				s.SayIt();
+				JFrame helpF = new JFrame();
+				JLabel hlab = new JLabel();
+				JScrollPane scroll = new JScrollPane(hlab);
+
+		        helpF.add(scroll);
+				helpF.setSize(536, 468);
+				helpF.setResizable(false);
+				helpF.setIconImage(new ImageIcon("icone.gif").getImage());
+				hlab.setIcon(new ImageIcon ("help.jpg"));
+				helpF.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+				helpF.getContentPane().add(scroll);
+				
+				helpF.setLocationRelativeTo(null);
+				helpF.setVisible(true);
 			}
 		});
 
