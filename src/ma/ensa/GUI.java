@@ -38,7 +38,7 @@ public class GUI {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		String [] tables={"mbrola_us2","mbrola_us2","mbrola_us3"};
+		String [] tables={"mbrola_us1","mbrola_us2","mbrola_us3"};
 
 		voiceName = new String("mbrola_us1");
 		fenetre.setLocationRelativeTo(null);
